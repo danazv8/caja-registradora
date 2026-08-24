@@ -1,22 +1,58 @@
-﻿const string nombreComercio = "KIOSKO EL RECREO";
+﻿const string NombreComercio = "KIOSKO EL RECREO";
 
-Console.WriteLine($"=== {nombreComercio} ===");
+Console.WriteLine($"=== {NombreComercio} ===");
 
 Console.Write("Nombre del cajero:");
 
-string cajero = Console.ReadLine();
+string cajero = Console.ReadLine() ?? "";
 
 Console.WriteLine($"Bienvenida, {cajero}. Caja abierta.");
 
-Console.Write("Ingrese nombre del producto: ");
 
-string nombreProducto = Console.ReadLine();
+decimal total = 0;
+int cantidadProductos = 0;
 
-Console.Write("Ingrese precio del producto: ");
+int opcion;
+do
+{
+    Console.WriteLine();
+    Console.WriteLine("¿Que desea hacer?");
+    Console.WriteLine("1. Cargar producto");
+    Console.WriteLine("2. Cerrar venta");
+    Console.Write("Opcion: ");
 
-decimal precioProducto = decimal.Parse(Console.ReadLine());
+    opcion = int.Parse(Console.ReadLine() ?? "0");
 
-Console.WriteLine($"El producto {nombreProducto} vale ${precioProducto}");
+    switch (opcion)
+    {
+        case 1:
+            Console.Write("Nombre del producto: ");
+            string producto = Console.ReadLine() ?? "";
+
+            Console.Write("Precio: ");
+            decimal precio = decimal.Parse(Console.ReadLine() ?? "0");
+
+            total += precio;
+            cantidadProductos++;
+
+            Console.WriteLine($"Producto cargado: {producto} - ${precio}");
+            break;
+
+        case 2:
+            Console.Write("Venta cerrada.");
+            break;
+
+        default:
+            Console.WriteLine("Opcion incorrecta");
+            break;
+
+    }
+}
+while (opcion != 2);
+
+Console.WriteLine();
+Console.WriteLine($"Cantidad de productos: {cantidadProductos}");
+Console.WriteLine($"El total es: {total}");
 
 
 
