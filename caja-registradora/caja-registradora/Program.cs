@@ -81,6 +81,9 @@ Console.WriteLine($"El total con descuento aplicado: ${totalConDescuento}");
 const decimal descuentoEf = 0.10m;
 const decimal recargoCredito = 0.15m;
 
+decimal recargo = 0;
+decimal totalFinal = totalConDescuento;
+
 int medioDePago;
 
 do
@@ -98,22 +101,23 @@ do
     {
         case 1:
             decimal descuentoEfMonto = totalConDescuento * descuentoEf;
-            decimal totalEf = totalConDescuento - descuentoEfMonto;
+            totalFinal = totalConDescuento - descuentoEfMonto;
             Console.WriteLine($"Pago en efectivo con 10% de descuento.");
-            Console.WriteLine($"Total final: {totalEf}");
+            Console.WriteLine($"Total final: {totalFinal}");
             break;
 
         case 2:
             Console.WriteLine("Pago con debito: sin cambios.");
+            totalFinal = totalConDescuento;
             Console.WriteLine($"Total final: {totalConDescuento}");
             break;
 
         case 3:
-            decimal recargoCreditoMonto = totalConDescuento * recargoCredito;
-            decimal totalCredito = totalConDescuento + recargoCreditoMonto;
+            recargo = totalConDescuento * recargoCredito;
+            totalFinal = totalConDescuento + recargo;
 
             Console.WriteLine("Pago con credito: 15% de recargo.");
-            Console.WriteLine($"Total final: {totalCredito}");
+            Console.WriteLine($"Total final: {totalFinal}");
             break;
 
         default:
@@ -121,7 +125,45 @@ do
             break;
     }
 }
-while (medioDePago < 1 || medioDePago > 3);  
+while (medioDePago < 1 || medioDePago > 3);
+
+
+Console.WriteLine();
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+}
+Console.WriteLine();
+Console.WriteLine($"{NombreComercio}");
+
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+
+}
+
+Console.WriteLine();
+Console.WriteLine($"Cajero: {cajero}");
+Console.WriteLine($"Productos: {cantidadProductos}");
+Console.WriteLine($"Subtotal: $ {total}");
+Console.WriteLine($"Descuento: $ {descuento}");
+Console.WriteLine($"Recargo: $ {recargo}");
+
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+
+}
+Console.WriteLine();
+Console.WriteLine($"TOTAL: $ {totalFinal}");
+
+for (int i = 0; i < 30; i++)
+{
+    Console.Write("-");
+
+}
+
+Console.WriteLine();
 
 
 Console.ReadLine();
