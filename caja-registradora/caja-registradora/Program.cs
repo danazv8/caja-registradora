@@ -52,7 +52,29 @@ while (opcion != 2);
 
 Console.WriteLine();
 Console.WriteLine($"Cantidad de productos: {cantidadProductos}");
-Console.WriteLine($"El total es: {total}");
+Console.WriteLine($"El total es: ${total}");
+
+
+const decimal descuento10 = 0.10m;
+const decimal descuento5 = 0.05m;
+
+decimal descuento = 0;
+
+if (total > 50000)
+{
+    descuento = total * descuento10;
+
+}
+else if (total > 20000)
+{
+    descuento = total * descuento5;
+}
+
+decimal totalConDescuento = total - descuento;
+
+Console.WriteLine($"El subtotal es de: ${total}"); 
+Console.WriteLine($"El descuento es de: ${descuento}");
+Console.WriteLine($"El total con descuento aplicado: ${totalConDescuento}");
 
 
 
